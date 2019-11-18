@@ -38,4 +38,5 @@ export class DetailComponent implements OnInit , OnDestroy {
 
       this.detailSubscription.unsubscribe();
     }
+
 }

@@ -21,6 +21,7 @@ const appRoute: Routes= [
 { path: 'product/update/:id', component: UpdateComponent },
 { path: 'product/list', component: ListComponent },
 { path: 'product/detail/:des', component: DetailComponent },
+{ path: 'panier/panier', component: PanierComponent },
 { path: '', component: ListComponent },
 { path: 'product/notfound', component: NotFoundComponent },
 { path: '**', redirectTo: '/product/notfound' }

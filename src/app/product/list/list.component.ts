@@ -11,12 +11,13 @@ import { PanierService } from 'src/app/services/panier.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnDestroy {
+
   products: Product [];
   productSubscription: Subscription;
-  monPanier: Product[]= [];
+  monPanier: Product[] = [];
 
   constructor(private productService: ProductService,private router:Router,
-    private panierService : PanierService) { }
+    private panierService: PanierService) { }
 
   ngOnInit() {
 
