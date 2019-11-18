@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PanierService } from 'src/app/services/panier.service';
+import { Product } from 'src/app/model/product.model';
 
 @Component({
   selector: 'app-panier',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanierComponent implements OnInit {
 
-  constructor() { }
+  panier: Product[] = [];
+
+  constructor(private panierService: PanierService) { }
 
   ngOnInit() {
+    this.panier = this.panierService.onGetAllProduct();
+    console.log(this.panier);
+  }
+
+  onDeleteoPanier(product: Product){
+
+    this.panierService.onDeleteProduct(product);
   }
 
 }
