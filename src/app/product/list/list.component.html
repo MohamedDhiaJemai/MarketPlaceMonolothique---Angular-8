@@ -1,34 +1,4 @@
-<!--<div class="row">
-    <div class="col-md-2">&nbsp;</div>
-    <div class="col-md-8">
-      <div class="row space-16">&nbsp;</div>
-      <div class="row">
-        <div class="col-sm-4" *ngFor="let produit of products" >
-          <div class="thumbnail">
-            <div class="caption text-center" >
-              <div class="position-relative">
-                <img src="../../../src/assets/img/images.png" style="width:72px;height:72px;" />
-              </div>
-              <h4 id="thumbnail-label">{{ produit.designation }}</h4>
-              <p><i class="glyphicon glyphicon-user light-red lighter bigger-120"></i>&nbsp;{{ produit.category }}</p>
-              <div class="thumbnail-description smaller">{{ produit.price }}</div>
-            </div>
-            <div class="caption card-footer text-center">
-              <ul class="list-inline">
-                <li><i class="people lighter"></i>&nbsp;7 Active Users</li>
-                <li></li>
-                <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-2">&nbsp;</div>
-    </div>
-  </div>
-
--->
-<table class="table">
+  <table class="table">
     <thead>
       <tr>
         <th>ID Poduct</th>
@@ -51,10 +21,10 @@
                     <td>{{ produit.category }}</td>
                     <td> <a routerLink="product/update/{{ produit.designation }}" class="btn btn-primary">UPDATE</a></td>
                     <td> <button type="button" class="btn btn-danger"(click)="onDeleteProduit(produit.id)" >SUPPRIMER</button></td>
-                    <td> <a routerLink="product/detail/{{ produit.designation }}"   class="btn btn-primary">Detail</a></td>
-                    <td> <button type="button" class="btn btn-success"(click)="onAddToPanier(produit)" >Ajouter au Panier</button></td>
-                    <td> <button type="button" class="btn btn-success"(click)="onDeleteoPanier(produit)" >Ajouter au Panier</button></td>
-                    <td> <button type="button" class="btn btn-primary"(click)="onGetAllPanier()" >Ajouter au Panier</button></td>
+                    <td> <a routerLink="product/detail/{{ produit.designation }}"   class="btn btn-primary">SEE DETAILS</a></td>
+                    <td> <button type="button" class="btn btn-success"(click)="onAddToPanier(produit)" >ADD TO CHART</button></td>
+                   <!-- <td> <button type="button" class="btn btn-success"(click)="onDeleteoPanier(produit)" >Ajouter au Panier</button></td> -->
+                    <!-- <td> <button type="button" class="btn btn-primary"(click)="onGetAllPanier()" >Ajouter au Panier</button></td> -->
 
         </tr>
 

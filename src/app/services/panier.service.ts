@@ -1,24 +1,40 @@
-import { Injectable } from '@angular/core';
-import { Product } from '../model/product.model';
+import { Injectable, Input } from "@angular/core";
+import { Product } from "../model/product.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class PanierService {
 
-  panier: any[] =[];
+  panier:Product[]= [];
+  quantite:any=1;
 
   constructor() {
-    this.panier = this.onGetAllProduct();
+   // this.panier = this.onGetAllProduct();
+   const temp = this.onGetAllProduct();
+   this.panier = (temp) ? temp : [];
   }
 
-  onAddProduct(product: Product){
+  onAddProduct(product: Product) {
 
-    this.panier.push(product);
-    localStorage.setItem("Panier", JSON.stringify(this.panier));
+    const index = this.panier.findIndex(data => {
+      if (data.id === product.id) {
+        return true;
+        this.quantite++;
+       console.log(this.quantite);
+      }
+    });
+
+    //console.log(index);
+    if (index === -1) {
+      this.panier.push(product);
+      localStorage.setItem("Panier", JSON.stringify(this.panier));
+      this.quantite = 1;
+    }
+    console.log(this.quantite);
   }
 
-/*  onAddProduct(product: Product){
+  /*  onAddProduct(product: Product){
 
 
     const object_name = {
@@ -29,31 +45,26 @@ export class PanierService {
     localStorage.setItem("Panier", JSON.stringify(object_name));
   }*/
 
-  onDeleteProduct(product: Product){
+  onDeleteProduct(product: Product) {
 
-    const index= this.panier.findIndex(
-      (data)=>{
-        if (data.id === product.id) return true;
-      }
-      );
-      console.log(index);
-      if (index > -1 ){
-        this.panier.splice(index, 1);
+    const index = this.panier.findIndex(data => {
+      if (data.id === product.id) return true;
+    });
 
-  localStorage.setItem("Panier", JSON.stringify(this.panier));
-      }
+    console.log(index);
+    if (index > -1) {
+      this.panier.splice(index, 1);
+      localStorage.setItem("Panier", JSON.stringify(this.panier));
     }
 
-  onGetAllProduct(){
-
-    return JSON.parse(localStorage.getItem("Panier"));
-
   }
-  onGetProductById(id: string){
-      return this.panier.find(
-        (data) =>{
-          if (data.id === id) return data;
-        }
-      );
+
+  onGetAllProduct() {
+    return JSON.parse(localStorage.getItem("Panier"));
+  }
+  onGetProductById(id: string) {
+    return this.panier.find(data => {
+      if (data.id === id) return data;
+    });
   }
 }

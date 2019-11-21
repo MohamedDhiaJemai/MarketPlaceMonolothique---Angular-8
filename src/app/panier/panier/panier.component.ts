@@ -11,7 +11,9 @@ export class PanierComponent implements OnInit {
 
   panier: Product[] = [];
 
-  constructor(private panierService: PanierService) { }
+  constructor(private panierService: PanierService) {
+
+   }
 
   ngOnInit() {
     this.panier = this.panierService.onGetAllProduct();
@@ -21,6 +23,7 @@ export class PanierComponent implements OnInit {
   onDeleteoPanier(product: Product){
 
     this.panierService.onDeleteProduct(product);
+    this.ngOnInit();
   }
 
 }

@@ -14,6 +14,7 @@ export class ListComponent implements OnInit, OnDestroy {
 
   products: Product [];
   productSubscription: Subscription;
+  //Pour Le Systeme de panier
   monPanier: Product[] = [];
 
   constructor(private productService: ProductService,private router:Router,

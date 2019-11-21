@@ -1,22 +1,22 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">ID PRODUCT</th>
+      <th scope="col">DESCRIPTION</th>
+      <th scope="col">PRICE</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let prod of panier" >
-      <th scope="row">1</th>
+      <th scope="row">{{quantite}}</th>
       <td>{{prod.id}}</td>
       <td>{{prod.description}}</td>
       <td>{{prod.price}}</td>
       <td> <button type="button" class="btn btn-success"(click)="onDeleteoPanier(prod)" >Supprimer</button></td>
     </tr>
   </tbody>
-  <button type="button" class="btn btn-primary btn-lg">Large button</button>
+  <button type="button" class="btn btn-primary btn-lg">Valider Panier</button>
 </table>
 
 
