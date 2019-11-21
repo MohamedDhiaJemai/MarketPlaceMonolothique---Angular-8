@@ -7,7 +7,7 @@ import { Product } from "../model/product.model";
 export class PanierService {
 
   panier:Product[]= [];
-  quantite:any=1;
+  quantite:any = 0;
 
   constructor() {
    // this.panier = this.onGetAllProduct();
@@ -19,19 +19,17 @@ export class PanierService {
 
     const index = this.panier.findIndex(data => {
       if (data.id === product.id) {
-        return true;
         this.quantite++;
-       console.log(this.quantite);
+        return true;
       }
     });
 
-    //console.log(index);
     if (index === -1) {
       this.panier.push(product);
       localStorage.setItem("Panier", JSON.stringify(this.panier));
       this.quantite = 1;
     }
-    console.log(this.quantite);
+    console.log("Quantité final : "+ this.quantite);
   }
 
   /*  onAddProduct(product: Product){
