@@ -8,8 +8,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let prod of panier" >
-      <th scope="row">{{quantite}}</th>
+    <tr *ngFor="let prod of panier" [id]="prod.id" >
+      <th scope="row"><input #quan type="text" [attr.value=]="onGetQuantity(quan.value)"></th>
+     <!--  <td> {{quantityPanier[0].quantity}}</td>-->
       <td>{{prod.id}}</td>
       <td>{{prod.description}}</td>
       <td>{{prod.price}}</td>

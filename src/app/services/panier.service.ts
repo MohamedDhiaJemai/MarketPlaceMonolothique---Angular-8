@@ -1,5 +1,6 @@
 import { Injectable, Input } from "@angular/core";
 import { Product } from "../model/product.model";
+import { Panier } from '../model/panier.model';
 
 @Injectable({
   providedIn: "root"
@@ -7,7 +8,8 @@ import { Product } from "../model/product.model";
 export class PanierService {
 
   panier:Product[]= [];
-  quantite:any = 0;
+   quantites: Panier[] = [];
+
 
   constructor() {
    // this.panier = this.onGetAllProduct();
@@ -19,7 +21,15 @@ export class PanierService {
 
     const index = this.panier.findIndex(data => {
       if (data.id === product.id) {
-        this.quantite++;
+        for(let i =0;i<this.quantites.length;i++){
+          if(this.quantites[i].id == product.id){
+            this.quantites[i].quantity = this.quantites[i].quantity +1;
+
+
+          }
+
+        }
+
         return true;
       }
     });
@@ -27,9 +37,9 @@ export class PanierService {
     if (index === -1) {
       this.panier.push(product);
       localStorage.setItem("Panier", JSON.stringify(this.panier));
-      this.quantite = 1;
+      this.quantites.push(new Panier(product.id,1));
     }
-    console.log("Quantité final : "+ this.quantite);
+    //console.log("Quantité final : "+ this.quantites[0].quantity);
   }
 
   /*  onAddProduct(product: Product){
