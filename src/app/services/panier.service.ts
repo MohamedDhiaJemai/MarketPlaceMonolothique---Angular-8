@@ -1,35 +1,28 @@
 import { Injectable, Input } from "@angular/core";
 import { Product } from "../model/product.model";
-import { Panier } from '../model/panier.model';
+import { Panier } from "../model/panier.model";
 
 @Injectable({
   providedIn: "root"
 })
 export class PanierService {
-
-  panier:Product[]= [];
-   quantites: Panier[] = [];
-
+  panier: Product[] = [];
+  quantites: Panier[] = [];
 
   constructor() {
-   // this.panier = this.onGetAllProduct();
-   const temp = this.onGetAllProduct();
-   this.panier = (temp) ? temp : [];
+    // this.panier = this.onGetAllProduct();
+    const temp = this.onGetAllProduct();
+    this.panier = temp ? temp : [];
   }
 
   onAddProduct(product: Product) {
-
     const index = this.panier.findIndex(data => {
       if (data.id === product.id) {
-        for(let i =0;i<this.quantites.length;i++){
-          if(this.quantites[i].id == product.id){
-            this.quantites[i].quantity = this.quantites[i].quantity +1;
-
-
+        for (let i = 0; i < this.quantites.length; i++) {
+          if (this.quantites[i].id == product.id) {
+            this.quantites[i].quantity = this.quantites[i].quantity + 1;
           }
-
         }
-
         return true;
       }
     });
@@ -37,7 +30,7 @@ export class PanierService {
     if (index === -1) {
       this.panier.push(product);
       localStorage.setItem("Panier", JSON.stringify(this.panier));
-      this.quantites.push(new Panier(product.id,1));
+      this.quantites.push(new Panier(product.id, 1));
     }
     //console.log("Quantité final : "+ this.quantites[0].quantity);
   }
@@ -54,7 +47,6 @@ export class PanierService {
   }*/
 
   onDeleteProduct(product: Product) {
-
     const index = this.panier.findIndex(data => {
       if (data.id === product.id) return true;
     });
@@ -64,7 +56,6 @@ export class PanierService {
       this.panier.splice(index, 1);
       localStorage.setItem("Panier", JSON.stringify(this.panier));
     }
-
   }
 
   onGetAllProduct() {
